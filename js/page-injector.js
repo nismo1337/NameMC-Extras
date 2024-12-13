@@ -33,6 +33,7 @@
     var customLink = localStorage.getItem("customLink") || "#7ba7ce";
     var customBtn = localStorage.getItem("customBtn") || "#848BB0";
     var customBase = localStorage.getItem("customBase") || (theme == "dark" ? "dark" : "light");
+    var customBackground = localStorage.getItem("customBackground") || "https://nismo1337.xyz/assets/media/sky.png"
 
     function hexToRgb(hex) {
         var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -89,6 +90,14 @@
                             </div>
                             <br>
                             <br>
+                            <label for="skinbackground" class="form-label" style="display:flex;">
+                                Skin Preview Background
+                                </a>
+                            </label>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">Image</span>
+                                <input type="text" class="form-control" placeholder="https://example.com/image.png" value="${customBackground}" aria-label="Custom Background Image" id="custombackground">
+                            </div>
                             <label for="customTheme" class="form-label" style="display:flex;">
                                 Custom Theme
                                 <a class="color-inherit" title="Reset back to base colors" style="margin-left:.3rem" id="resetcustom" href="javascript:void(0)">
@@ -143,6 +152,7 @@
                 var customtextcolor = document.querySelector("#customtextcolor");
                 var customlinkcolor = document.querySelector("#customlinkcolor");
                 var custombtncolor = document.querySelector("#custombtncolor");
+                var custombackground = document.querySelector("#custombackground")
                 var selectBase = document.querySelector("#selectBase");
                 var resetcustom = document.querySelector("#resetcustom");
                 var exportcustom = document.querySelector("#exportcustom");
@@ -261,6 +271,11 @@
 
                     localStorage.customBtn = custombtncolor.value;
                     customBtn = custombtncolor.value;
+                }
+
+                custombackground.onchange = () => {
+                    localStorage.customBackground = custombackground.value;
+                    customBackground = customBackground.value;
                 }
 
                 selectBase.onchange = () => {

@@ -1,3 +1,5 @@
+const customBackground = localStorage.getItem("customBackground") || "https://nismo1337.xyz/assets/media/sky.png";
+
 /* copyright 2024 | Faav#6320 | github.com/bribes */
 
 // only use for getting animate cookie
@@ -631,6 +633,20 @@ if (location.pathname.split("-").length >= 5 || endsWithNumber(location.pathname
 
       historyTitle.querySelector(".fa-edit")?.parentElement?.remove();
     });
+
+    // skin background inject, css written by me (css pro?) and css injection partially written by gpt :-)
+    const css = `
+    .col-md-auto .card .checkered {
+      background-image: url("${customBackground}");
+      background-size: cover;
+    }
+    `;
+
+    const style = document.createElement('style');
+
+    style.textContent = css;
+
+    document.head.appendChild(style);
 
     waitForSVSelector('#skin-3d', () => {
       const oldContainer = document.querySelector('#skin-3d');
